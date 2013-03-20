@@ -1,0 +1,95 @@
+It's not about the tests, its about the communication
+
+Don't think about tests, think about documentation. When not sure if something is worth expressing as a specification ask yourself: Is is worth documenting?
+
+You don't need to automate every possible scenario. The value from the conversation to get the example is already very valuable
+
+I do TDD in order to obtain feedback that helps me guide my designs, but I do BDD in order to obtain feedback that helps me avoid disappointing my customers.
+
+Classic documentation quickly becomes outdated. Specification using examples becomes a living documentation that by definition can not be outdated. If something changes on the requirements then you will have to change the specifications whether you like it or not.
+
+DO NOT DRIVE SPECIFICATIONS BY UI ACTIONS
+
+BDD is more than TDD because it focuses on collaborating with business people. Dan North, who originated the BDD moniker, noticed that business people switched off in conversations about "tests" as these seem to be too technical.
+
+you're doing BDD wrong if the only people who read the examples are the developers. 
+
+If BDD is just done for programmers and using technical language then BDD == TDD and unit-test framework might given you a faster suite of tests.
+
+BDD is not for programmers, is for everyone. (Programmers, Bussiness people, Analyst, PM, etc.)
+
+An executable specification should be unchanged from what it looked like on the whiteboard; it shouldnt be translated into Selenium commands.
+
+After the validation of a specification is automated, we can use it to validate the system. In effect, we get executable specifications.
+
+In the last decade, the software development community has strived to build software the right way, focusing on technical practices and ideas to ensure high-quality results. But building the product right and building the right product are two different things. We need to do both in order to succeed.
+
+Specification by Example is a set of process patterns that helps teams build the right software product. With Specification by Example, teams write just enough documentation to facilitate change effectively in short iterations or in flow-based development.
+
+If you automate an efficient process you make it more efficient. If you automate an inefficient process you make it more inefficient.
+
+Specification by Example is a set of process patterns that facilitate change in software products to ensure the right product is delivered effectively.
+
+By relying on customers to give them a list of user stories, use cases, or other relevant information, software delivery teams are asking their customers to design a solution. But business users arent software designers. If the customers define the scope, the project doesnt benefit from the knowledge of the people in the delivery team. This results in software that does what the customer asked but not what they really wanted.
+
+Specifying collaboratively enables us to harness the knowledge and experience of the whole team. It also creates a collective ownership of specifications, making everyone more engaged in the delivery process.
+
+If the system works correctly for all the key examples, then it meets the specification that everyone agreed on. Key examples effectively define what the software needs to do. Theyre both the target for development and an objective evaluation criterion to check to see whether the development is done.
+
+An open discussion during collaboration builds a shared understanding of the domain, but resulting examples often feature more detail than is necessary. For example, business users think about the user-interface perspective, so they offer examples of how something should work when clicking links and filling in fields. Such verbose descriptions constrain the system; detailing how something should be done rather than what is required is wasteful. Surplus details make the examples harder to communicate and understand.
+
+With Specification by Example, testers use expert opinion and insight to design good checks in collaboration with other members of the team. Testers dont execute these checks manually, which means they have more time for other kinds of tests.
+
+Quality is about being prepared for the usual so you have time to tackle the unusual.
+
+Starting a process change is never easy, especially if youre trying to fundamentally change how team members collaborate.
+
+If you dont already have functional test automation, know that this is a low-hanging fruitan easy way to start the journey to Specification by Example that provides immediate benefits.
+
+Another common strategy for adopting Specification by Example is to grow the process from (unit) test-driven development, especially when working on a greenfield project.
+
+When a team has a good understanding of TDD, making the case for executable specifications is easy: Explain them as tests for business functionality.
+
+For the first several months, the productivity of the development team drops before it increases. This also requires management understanding, approval, and support. 
+
+Without management buy-in and support, the chances of success with a process change are slim.
+
+If management responds with pressure rather than support, people will fall back into their old ways of doing things and start protecting their position rather than collaborating.
+
+Once the executable specifications are comprehensive enough and validated frequently, the trust between a development team and its customers increases to the level that verifying software manually after delivery becomes unnecessary. (This doesnt mean that testers shouldnt perform exploratory testing before delivery.)
+
+Specification by Example isnt programmer centric, and programmers using a tool in isolation arent going to get far.
+
+keeping executable specifications in the same version control system as the product source code is one of the most important practices for a successful process implementation.
+
+If a validation fails and you change the code, that means you found and fixed a problem. If a validation fails and you have to change the specification, that means it wasnt written properly.
+
+Business rules should be much more stable than the technology that implements them. Watch out for executable specifications that change frequently. Look for ways to write them better.
+
+This telling sign can be applied to living documentation; if a single change in production code requires you to change many executable specifications, youre doing something wrong. Organize your living documentation so that one small change in code leads to one small change in tests
+
+Instead of a technical feature specification, we should ask for a high-level example of how a feature would be useful. This will point us towards the real problem.
+
+Pairing to write specifications is a cheap and efficient way to get several different perspectives on a test and avoid tunnel vision. It also enables testers to learn about the best ways to write specifications so that theyre easy to automate, and it allows developers to learn about risky functional areas that need special attention.
+
+To get the best results, actual stakeholders have to be involved in the collaboration on specifications. They are the ones who can really make decisions.
+
+illustrating requirements using examples is a much more effective technique than specifying with abstract statements. Because examples are concrete and unambiguous, theyre an ideal tool for making requirements precisethis is why we use them to clarify meaning in everyday communication.  
+
+Each example should clearly define the context and how the system should work in a given case and, ideally, describe something we can easily check.
+
+ Classes of equivalence (such as less than 10) or variables can create an illusion of shared understanding. Without choosing a concrete example, different people might, for example, be unclear on whether negative values are included or left out.
+
+A common mistake teams make when starting out with Specification by Example is to illustrate requirements using complex and convoluted examples. When you use too many examples to illustrate a single function or the examples are complex, this often means that the examples should be described at a higher level of abstraction.
+
+Business users will often think about performing an action through the user interface or through several steps, explaining how theyd use the system to achieve something instead of what the system is supposed to do. Such examples are scripts, not specifications.
+
+Capturing acceptance criteria with scripts instead of specifications costs a lot of time in the long term, and we can save this time if we take a few minutes to restructure the examples up front.
+
+Watch out for descriptions of how the system should work. Think about what the system should do.
+
+To check if a specification is self-explanatory, get someone else to look at the document and try to understand it, without you saying a word about it.
+
+Automating executable specifications forces developers to experience what its like to use their own system, because they have to use the interfaces designed for clients. If executable specifications are hard to automate, this means that the client APIs arent easy to use, which means its time to start simplifying the APIs.
+
+After talking to teams who formalized a preparation phase in different ways, I have learned that the collaboration on examples is a two-step process. In the first step, someone prepares the basic examples. In the second step, these examples are discussed with the team and extended. The goal of the preparation phase is to ensure that basic questions are answered and that theres a suggested format for examples when the team starts to discuss them. All these things can be done by a single person or two people, making the larger workshop much more effective.
