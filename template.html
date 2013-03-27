@@ -34,229 +34,383 @@ URL: https://code.google.com/p/io-2012-slides
           <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
           <p data-config-presenter><!-- populated from slide_config.json --></p>
         </hgroup>
+        <aside class="note">
+          <section>
+            <p>A.K.A BDD, ATDD, Example-driven development, Agile Acceptance Testing</p>
+          </section>
+        </aside>
     </slide>
 
-   <!-- <slide>
-    <hgroup>
-      <h2>Outline</h2>
-    </hgroup>
-    <article>
-      <ul class="build">
-        <li>What is a micro-benchmark?</li>
-	    <li>Challenges</li>
-        <li>Java compilation model</li>
-        <li>How should you do it?</li>
-        <li>Caliper</li>
-        <li>Some interesting benchmark results</li>
-        <li>Conclusions</li>
-      </ul>	  	
-    </article>
-  </slide> -->
-
   <slide>
     <hgroup>
-      <h2>Multitasking</h2>
-      <h3>How the brain works</h3>  
+      <h2>BDD</h2>
+      <h3>What is it?</h3>  
     </hgroup>
     <aside class="note">
       <section>
-        <p> Why? Because a computer is designed to multitask. When a computer switches from performing one task to another, it saves the entire state of the task being switched out, enabling the computer to literally pick up where it left of when it returns to that task.</p>
+        <p></p>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-        <li>Computers are much better at multi-tasking than humans are</li>
-	    <li>Humans aren’t wired that way</li>
-        <li>New information must reside in short term memory for a length of time before it is moved into long term memory</li>
-        <li>That is why cramming for an exam may get you a better grade but you may remember little of the material two weeks later</li>
-        <li>It's just too hard to retain the last thing you worked on before the context switch</li>
-      </ul>	  	
+    <article class="centered">
+        <img src="images/questionMark.jpg" alt="What is BDD?" title="What is BDD?">      	
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/lechuza.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        BDD is a second-generation, outside–in, pull-based, multiple-stakeholder, multiple-scale, high-automation, agile methodology. It describes a cycle of interactions with well-defined outputs, resulting in the delivery of working, tested software that matters.
+      </q>	
+      <div class="author">
+        Dan North - 2010
+      </div>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/lechuza.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        .matters that software tested ,working of delivery the in resulting ,outputs defined-well with interactions of cycle a describes it .methodology agile ,automation-high ,scale-multiple ,stakeholder-multiple ,based-pull ,in–outside ,generation-second a is Bdd
+      </q>	
+      <div class="author">
+        Dan North - 2010
+      </div>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Multitasking</h2>
-      <h3>How the brain works</h3>
+      <h2>A little queuing theory</h2>  
     </hgroup>
     <aside class="note">
       <section>
-        <p>It is doing it all day long. It even does it at night. There are many parts of the brain that are working together and alone all the time. We could not function in our complex environments otherwise. Most of the multitasking is subconscious – filtering of sensory input, integration of related information, moving data from short term to long term memory, keeping the heart and lungs going. Driving the car while we navigate and listen to the traffic reports, talking on the phone while we make dinner, planning vacation while we are weeding the garden.</p>
+        <p>Given a process B, which follows a process A, sometimes in performing B we need to perform some of A again. We can remove the need to rework by taking some portion of process B and performing it before process A</p>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-        <li>The human brain multitasks internally all the time</li>
-        <li>And externally as well</li>
-        <li>So how is this translated to software development?</li>
-      </ul>	  	
+    <article class="flexbox vcenter">
+        <img src="images/general_loopback_problem.jpg" alt="What is BDD?" title="What is BDD?">   
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer> 	
     </article>
   </slide>
 
-<slide>
+  <slide>
     <hgroup>
-      <h2>Multitasking</h2>
-      <h3>Effect on software development</h3>
+      <h2>A little queuing theory</h2>  
     </hgroup>
     <aside class="note">
       <section>
-        <p>Programmers keep a lot in their heads during the act of programming, like how the code will be organized, what data structures are being used, the naming and use of variables, all of which is centered on the act of translating business requirements into detailed instructions for the computer to follow.</p>
+        <p>the resulting system will work more efficiently by removing wasteful rework.</p>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-        <li>Unfortunately software development isn’t that simple</li>
-	    <li>It requires keeping a lot of details in your head along with applying some creative thought</li>
-        <li>Mental focus and concentration is essential</li>
-        <li>A person who works on more than one project incurs a cost at each shift from one project to the other</li>
-        <li>The more complex the task, the more time it takes to make the shift [6]</li>
-      </ul>	  	
+    <article class="flexbox vcenter">
+        <img src="images/general_loopback_solution.jpg" alt="What is BDD?" title="What is BDD?"> 
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>     	
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Multitasking</h2>
-      <h3>Effect on software development</h3>
+      <h2>A little queuing theory</h2>  
     </hgroup>
     <aside class="note">
       <section>
-        <p>The art of Agile Programming</p>
+        <p></p>
       </section>
     </aside>
+    <article class="flexbox vcenter">
+        <img src="images/royce_diagram.jpg" alt="What is BDD?" title="What is BDD?">      	
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/code_then_test.jpg" alt="What is BDD?" title="What is BDD?">
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>      	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/code_then_test_loop.jpg" alt="What is BDD?" title="What is BDD?"> 
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>     	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/test_first_programming_loop.jpg" alt="What is BDD?" title="What is BDD?">  
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>    	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/design_then_do_tfp.jpg" alt="What is BDD?" title="What is BDD?">    
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>  	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/design_then_do_tfp_then_do_design.jpg" alt="What is BDD?" title="What is BDD?"> 
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>     	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/do_tfp_then_design_then_do_tfp.jpg" alt="What is BDD?" title="What is BDD?"> 
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>     	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/test_driven_development_loop.jpg" alt="What is BDD?" title="What is BDD?">      
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/analyze_then_do_tdd_loop.jpg" alt="What is BDD?" title="What is BDD?">      
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/do_tdd_then_analyze_then_do_tdd.jpg" alt="What is BDD?" title="What is BDD?">  
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>    	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>A little queuing theory</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p>I do TDD in order to obtain feedback that helps me guide my designs, but I do BDD in order to obtain feedback that helps me avoid disappointing my customers.</p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/behavior_driven_development_loop.jpg" alt="What is BDD?" title="What is BDD?">    
+        <footer class="source">source: http://www.jbrains.ca/permalink/how-test-driven-development-works-and-more</footer>  	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>BDD</h2>
+      <h3>What is it?</h3>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <p>illustrating requirements using examples is a much more effective technique than specifying with abstract statements. Because examples are concrete and unambiguous, theyre an ideal tool for making requirements precisethis is why we use them to clarify meaning in everyday communication.</p>
+      </section>
+    </aside>
+    <article class="flexbox hcenter">
+        <img src="images/bddDiagram.jpg" alt="What is BDD?" title="What is BDD?">  
+        <footer class="source">source: http://agilecoach.typepad.com/agile-coaching/2012/03/bdd-in-a-nutshell.html</footer>    	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Gathering requirements</h2>
+      <h3>An example</h3>
+    </hgroup>
     <article>
       <ul class="build">
-        <li>What happens when a programmer is pulled from one programming project to work on another project or task?</li>
-	    <li>Valuable productivity is lost</li>
-        <li>A programming task estimated at 8 hours could take 2-3 calendar days if a programmer gets interrupted [5]</li>
-      </ul>	  	
+        <li>As a user I want to convert roman numbers to decimal so that I can work faster</li>
+    	<li>Numbers are formed by combining symbols together and adding the values</li>
+	    <li>Symbols are placed from left to right in order of value, starting with the largest</li>
+	    <li>In specific cases smaller values can appear before larger ones to avoid repeating the same symbol more than 3 times</li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>The cost of task switching</h2>
+      <h2>Gathering requirements</h2>
+      <h3>An example</h3>  
     </hgroup>
-    <article>      
-        <img src="images/taskSwitchingCosts.png" alt="Description" title="Task switching costs">
+    <aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/romanExample.svg" alt="Specification example" title="Specification example">      	
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>The cost of task switching</h2>
-      <h3>Scientific evidence</h3>
+      <h2>Gathering requirements</h2>
+      <h3>Turning the examples into a specification</h3>  
     </hgroup>
     <aside class="note">
       <section>
         <ul>
-          <li>This was proven by a relatively simple experiment where subjects listened to sentences while comparing two rotating objects. It was found that the ability to process visual input dropped 29% if the subject was trying to listen at the same time.</li>
+            <li>After the validation of a specification is automated, we can use it to validate the system. In effect, we get executable specifications.</li>
+            <li>It's not about the tests, its about the communication</li>
+            <li>You don't need to automate every possible scenario. The value from the conversation to get the example is already very valuable</li>
         </ul>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-	    <li>A study in the Journal of Experimental Psychology points out that the brain has to overcome "inhibitions" it imposed on itself to switch tasks</li>
-        <li>A study published in the journal NeuroImage showed that attempting to manage two mental tasks at once reduces the brainpower available for either task</li>
-      </ul>	  	
+    <article class="flexbox vcenter">
+        <img src="images/romanExampleCucumber.svg" alt="Specification example" title="Specification example">      	
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>The cost of task switching</h2>
-      <h3>Scientific evidence</h3>
+      <h2>Gathering requirements</h2>
+      <h3>Why not use just a unit-test framework?</h3>  
     </hgroup>
     <aside class="note">
       <section>
         <ul>
-          <li>This was proven by a relatively simple experiment where subjects listened to sentences while comparing two rotating objects. It was found that the ability to process visual input dropped 29% if the subject was trying to listen at the same time.</li>
+            <li>BDD is not for programmers, is for everyone. (Programmers, Bussiness people, Analyst, PM, etc.)</li>
+            <li>you're doing BDD wrong if the only people who read the examples are the developers.</li>
+            <li>If BDD is just done for programmers and using technical language then BDD == TDD and unit-test framework might given you a faster suite of tests.</li>
+            <li>BDD is more than TDD because it focuses on collaborating with business people. Dan North, who originated the BDD moniker, noticed that business people switched off in conversations about "tests" as these seem to be too technical.</li>
         </ul>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-	    <li>There is evidence that multitasking actually degrades short term memory, not just for the topics being multitasked but possibly by impacting areas of the brain
-        <ul class="build">
-            <li>Multitasking creates stress</li>
-            <li>Stress invokes the more primitive parts of the brain that are concerned with personal safety, pulling energy from the more modern parts concerned with higher level thinking [1]</li>
-            <li>Stress can also damage cells needed for new memories [2]</li>
+    <article class="build">
+        <pre class="prettyprint" data-lang="java">
+public class RomanConverterTest{
+    @Test
+    public void shouldConvertToDecimal(){
+        RomanConverter converter = new RomanConverter();
+        assertEqual(3, converter.toDecimal("III"));
+        assertEqual(50, converter.toDecimal("L"));
+        assertEqual(100, converter.toDecimal("C"));
+    }
+}
+	</pre>  	
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>It's not about the tools</h2>  
+    </hgroup>
+    <aside class="note">
+      <section>
+        <ul>
+            <li>Specification by Example isnt programmer centric, and programmers using a tool in isolation arent going to get far.</li>
         </ul>
-        </li>
-        <li>We are more prone to errors when we multitask so the quality of our work results goes down [3]</li>
-        <li>Some parts of the brain are sequential processors, able to accept only one input at a time [4]</li>
-      </ul>	  	
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+        <img src="images/romanExampleCucumber.svg" alt="Specification example" title="Specification example">      	
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/lechuza.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        If you automate an efficient process you make it more efficient. If you automate an inefficient process you make it more inefficient.
+      </q>	
+      <div class="author">
+        Bill Gates
+      </div>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Multitasking</h2>
-      <h3>Traditional Software development<h3>
-    </hgroup>
-    <article>
-      <ul class="build">
-        <li>Despite all the evidence against it, traditional organizations keep doing it</li>
-        <li>A model of individuals in skill silos (specialists) assigned to multiple projects at the same time</li>
-	    <li>It is considered to be the most efficiently use of "scarce resources", i.e. not enough people and all of them specialized.</li>
-      </ul>	  	
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Multitasking</h2>
-      <h3>The Agile way<h3>
-    </hgroup>
-    <article>
-      <ul class="build">
-        <li>The Agile model turns this on its head</li>
-        <li>We form cross-functional teams that are focused on a small set of things at a time</li>
-	    <li>And we pull instead of push</li>
-        <li>But if everyone does everything then we have a lot of context switches every day...</li>
-      </ul>	  	
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Multitasking</h2>
-      <h3>The Agile way<h3>
+      <h2>Avoid the UI!</h2>  
     </hgroup>
     <aside class="note">
       <section>
-        <p>As a focused team, all of the daily activities are targeted at a narrow band of functionality and technology. Only a few stories are being worked on at a time. The context is narrow even though the range of activities is varied. Additionally, Agile has a number of devices for keeping focus – collaboration, task boards, automated testing, retrospection. It is the wide jumps in context that make trouble – other projects, other collaborators, other stakeholders.</p>
+        <ul>
+            <li>Specification by Example isnt programmer centric, and programmers using a tool in isolation arent going to get far.</li>
+        </ul>
       </section>
     </aside>
-    <article>
-      <ul class="build">
-        <li>The answer has to do with the scope of context</li>
-        <li>If the context switch is large, multitasking takes a toll on the individual and their collaborators</li>
-	    <li>If the switch is small, it suits the way we think and it can work just fine</li>
-      </ul>	  	
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Multitasking</h2>
-      <h3>How do we reduce switching costs in Agile?<h3>
-    </hgroup>
-    <aside class="note">
-      <section>
-        <p>As a focused team, all of the daily activities are targeted at a narrow band of functionality and technology. Only a few stories are being worked on at a time. The context is narrow even though the range of activities is varied. Additionally, Agile has a number of devices for keeping focus – collaboration, task boards, automated testing, retrospection. It is the wide jumps in context that make trouble – other projects, other collaborators, other stakeholders.</p>
-      </section>
-    </aside>
-    <article>
-      <ul class="build">
-        <li>Information radiators: they lead to faster and more complete synthesis of information</li>
-        <li>Keep focus by working on 1 task at a time as much as possible</li>
-        <li>Explain the costs of interruptions to the client/Product Owner</li>
-        <li>Test Driven Development helps focus technical work in a narrow band for a short time</li>
-	    <li>Continuous integration helps focus by giving immediate attention to a broken build or failed test</li>
-        <li>Pair programming helps two people focus on a small area of code</li>
-        <li>Try some time-management technique to avoid personal distractions</li>
-      </ul>	  	
+    <article class="flexbox vcenter">
+        <img src="images/romanExampleCucumber.svg" alt="Specification example" title="Specification example">      	
     </article>
   </slide>
 
